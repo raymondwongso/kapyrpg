@@ -1,4 +1,4 @@
-name: test
+name: Test
 run-name: ${{ github.actor }} is running test pipeline
 on: [push]
 
