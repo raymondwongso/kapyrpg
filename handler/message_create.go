@@ -43,7 +43,7 @@ func (h *handler) MessageCreateHandler(session *discordgo.Session, message *disc
 	switch args[0] {
 	case "help":
 		// msgSend, err = h.helpService.ListCommand(ctx)
-		log.Info().Msg("masuk help service")
+		err = errors.New("help service is not immplemented")
 	default:
 		// command has valid format, but unknown. silently react with confuse emoji
 		_ = h.reactConfuse(session, message.ChannelID, message.ID)
@@ -52,6 +52,7 @@ func (h *handler) MessageCreateHandler(session *discordgo.Session, message *disc
 
 	if err != nil {
 		log.Error().Err(err).Strs("args", args).Msg("error handling message create handler")
+		return
 	}
 
 	_, err = session.ChannelMessageSendComplex(message.ChannelID, msgSend)
